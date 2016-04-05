@@ -193,19 +193,15 @@ use at your own risk :-)
 
 # AUTHOR
 
-Matt Sergeant, matt@sergeant.org
+Matt Sergeant, <`matt@sergeant.org`>.
 
-# LICENSE
+# CONTRIBUTORS
 
-This is free software, you may use it and distribute it under the
-same terms as Perl itself. Please be aware though that libghttp is
-licensed under the terms of the LGPL, a copy of which can be found
-in the libghttp distribution.
+- Chase Whitener, <`capoeirab@cpan.org`>.
 
-# BUGS
+# COPYRIGHT AND LICENSE
 
-Probably many - this is my first adventure into XS.
+Copyright (c) 2000 Matt Sergeant.  All rights reserved.
 
-libghttp doesn't support SSL. When libghttp does support SSL, so will
-HTTP::GHTTP. The author of libghttp, Chris Blizzard <blizzard@redhat.com>
-is looking for patches to support SSL, so get coding!
+This module is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.

@@ -62,9 +62,28 @@
          }
       }
    },
-   "provides" : {},
+   "provides" : {
+      "HTTP::GHTTP" : {
+         "file" : "lib/HTTP/GHTTP.pm",
+         "version" : "1.080"
+      }
+   },
    "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/genio/http-ghttp/issues"
+      },
+      "homepage" : "https://github.com/genio/http-ghttp",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/genio/http-ghttp.git",
+         "web" : "https://github.com/genio/http-ghttp"
+      }
+   },
    "version" : "1.080",
+   "x_contributors" : [
+      "Chase Whitener <capoeirab@cpan.org>"
+   ],
    "x_deprecated" : 1
 }
 
