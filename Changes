@@ -1,6 +1,9 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+    -
+
+1.080_001 2016-04-07
     - Made to use Dist::Zilla
     - Require Alien::GHTTP
     - Mark as deprecated

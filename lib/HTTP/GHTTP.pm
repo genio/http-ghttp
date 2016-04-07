@@ -3,7 +3,7 @@ package HTTP::GHTTP;
 use strict;
 use warnings;
 
-our $VERSION = '1.080_001';
+our $VERSION = '1.080_002';
 $VERSION = eval $VERSION;
 
 require DynaLoader;
