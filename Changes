@@ -2,6 +2,9 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
     - Made to use Dist::Zilla
+    - Require Alien::GHTTP
+    - Mark as deprecated
+    - Cleaned up some documentation
 
 1.07
     - Added support for clean() and NULL return values (david Ramboz)

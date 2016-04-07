@@ -1,5 +1,5 @@
 {
-   "abstract" : "Perl interface to the gnome ghttp library",
+   "abstract" : "(DEPRECATED) Perl interface to the gnome ghttp library",
    "author" : [
       "Matt Sergeant <matt@sergeant.org>"
    ],
@@ -16,7 +16,7 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "Alien::GHTTP" : "0.001"
+            "Alien::GHTTP" : "0.002"
          }
       },
       "configure" : {
@@ -65,10 +65,10 @@
    "provides" : {
       "HTTP::GHTTP" : {
          "file" : "lib/HTTP/GHTTP.pm",
-         "version" : "1.080"
+         "version" : "1.080_001"
       }
    },
-   "release_status" : "stable",
+   "release_status" : "testing",
    "resources" : {
       "bugtracker" : {
          "web" : "https://github.com/genio/http-ghttp/issues"
@@ -80,7 +80,7 @@
          "web" : "https://github.com/genio/http-ghttp"
       }
    },
-   "version" : "1.080",
+   "version" : "1.080_001",
    "x_contributors" : [
       "Chase Whitener <capoeirab@cpan.org>"
    ],

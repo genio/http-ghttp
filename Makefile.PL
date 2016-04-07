@@ -11,10 +11,10 @@ use ExtUtils::MakeMaker;
 use Alien::GHTTP;
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "Perl interface to the gnome ghttp library",
+  "ABSTRACT" => "(DEPRECATED) Perl interface to the gnome ghttp library",
   "AUTHOR" => "Matt Sergeant <matt\@sergeant.org>",
   "BUILD_REQUIRES" => {
-    "Alien::GHTTP" => "0.001"
+    "Alien::GHTTP" => "0.002"
   },
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0
@@ -37,7 +37,7 @@ my %WriteMakefileArgs = (
     "IPC::Open3" => 0,
     "Test::More" => "0.88"
   },
-  "VERSION" => "1.080",
+  "VERSION" => "1.080_001",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -50,7 +50,7 @@ my %WriteMakefileArgs = (
 );
 
 my %FallbackPrereqs = (
-  "Alien::GHTTP" => "0.001",
+  "Alien::GHTTP" => "0.002",
   "Carp" => 0,
   "DynaLoader" => 0,
   "Exporter" => 0,
