@@ -104,7 +104,7 @@ HTTP::GHTTP - (DEPRECATED) Perl interface to the gnome ghttp library
 =head1 DESCRIPTION
 
 The GNOME L<libghttp|http://ftp.gnome.org/pub/gnome/sources/libghttp> project
-has been dead since 2009.  This, this library is deprecated.
+has been dead since 2002.  Thus, this library is deprecated.
 
 B<Do not use this module!>
 

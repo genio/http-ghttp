@@ -27,6 +27,7 @@ my %WriteMakefileArgs = (
     "Carp" => 0,
     "DynaLoader" => 0,
     "Exporter" => 0,
+    "IO::Handle" => 0,
     "strict" => 0,
     "warnings" => 0
   },

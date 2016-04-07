@@ -1,7 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
-    -
+    - Fixed a missing dep
+    - Fixed the date of libghttp's demise to 2002
 
 1.080_001 2016-04-07
     - Made to use Dist::Zilla
