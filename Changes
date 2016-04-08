@@ -1,6 +1,9 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+    -
+
+1.080_002 2016-04-07
     - Fixed a missing dep
     - Fixed the date of libghttp's demise to 2002
     - Updated XS code to handle refcounts better (thanks, dsteinwand)
