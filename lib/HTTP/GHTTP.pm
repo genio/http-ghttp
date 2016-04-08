@@ -2,13 +2,14 @@ package HTTP::GHTTP;
 
 use strict;
 use warnings;
+use XSLoader ();
+use base qw(Exporter);
 
 our $VERSION = '1.080_002';
+our $XS_VERSION = $VERSION;
 $VERSION = eval $VERSION;
 
-require DynaLoader;
-use base qw(Exporter DynaLoader);
-bootstrap HTTP::GHTTP $VERSION;
+XSLoader::load('HTTP::GHTTP', $XS_VERSION);
 
 our @EXPORT_OK = qw(
     get

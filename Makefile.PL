@@ -25,9 +25,9 @@ my %WriteMakefileArgs = (
   "NAME" => "HTTP::GHTTP",
   "PREREQ_PM" => {
     "Carp" => 0,
-    "DynaLoader" => 0,
     "Exporter" => 0,
     "IO::Handle" => 0,
+    "XSLoader" => 0,
     "strict" => 0,
     "warnings" => 0
   },
@@ -53,13 +53,13 @@ my %WriteMakefileArgs = (
 my %FallbackPrereqs = (
   "Alien::GHTTP" => "0.002",
   "Carp" => 0,
-  "DynaLoader" => 0,
   "Exporter" => 0,
   "ExtUtils::MakeMaker" => 0,
   "File::Spec" => 0,
   "IO::Handle" => 0,
   "IPC::Open3" => 0,
   "Test::More" => "0.88",
+  "XSLoader" => 0,
   "strict" => 0,
   "warnings" => 0
 );
