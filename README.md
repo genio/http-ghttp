@@ -233,7 +233,7 @@ perlfunc).
 
 Note also that $sock above is an [IO::Handle](https://metacpan.org/pod/IO::Handle), not an [IO::Socket](https://metacpan.org/pod/IO::Socket), although
 you can probably get away with re-blessing it. Also note that by calling
-`$r-`get\_socket()> you load [IO::Handle](https://metacpan.org/pod/IO::Handle), which probably brings a lot of
+`$r->get_socket()` you load [IO::Handle](https://metacpan.org/pod/IO::Handle), which probably brings a lot of
 code with it, thereby obliterating a lot of the use for [libghttp](http://ftp.gnome.org/pub/gnome/sources/libghttp). So
 use at your own risk :-)
 

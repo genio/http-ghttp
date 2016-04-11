@@ -1,7 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
-    -
+    - Fixed a minor POD issue
 
 1.080_002 2016-04-07
     - Fixed a missing dep

@@ -371,7 +371,7 @@ perlfunc).
 
 Note also that $sock above is an L<IO::Handle>, not an L<IO::Socket>, although
 you can probably get away with re-blessing it. Also note that by calling
-C<$r->get_socket()> you load L<IO::Handle>, which probably brings a lot of
+C<< $r->get_socket() >> you load L<IO::Handle>, which probably brings a lot of
 code with it, thereby obliterating a lot of the use for L<libghttp|http://ftp.gnome.org/pub/gnome/sources/libghttp>. So
 use at your own risk :-)
 

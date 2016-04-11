@@ -14,7 +14,7 @@ my %WriteMakefileArgs = (
   "ABSTRACT" => "(DEPRECATED) Perl interface to the gnome ghttp library",
   "AUTHOR" => "Matt Sergeant <matt\@sergeant.org>",
   "BUILD_REQUIRES" => {
-    "Alien::GHTTP" => "0.002"
+    "Alien::GHTTP" => "0.003"
   },
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0
@@ -51,7 +51,7 @@ my %WriteMakefileArgs = (
 );
 
 my %FallbackPrereqs = (
-  "Alien::GHTTP" => "0.002",
+  "Alien::GHTTP" => "0.003",
   "Carp" => 0,
   "Exporter" => 0,
   "ExtUtils::MakeMaker" => 0,

@@ -16,7 +16,7 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "Alien::GHTTP" : "0.002"
+            "Alien::GHTTP" : "0.003"
          }
       },
       "configure" : {
