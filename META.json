@@ -63,10 +63,10 @@
    "provides" : {
       "HTTP::GHTTP" : {
          "file" : "lib/HTTP/GHTTP.pm",
-         "version" : "1.080_003"
+         "version" : "1.081"
       }
    },
-   "release_status" : "testing",
+   "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
          "web" : "https://github.com/genio/http-ghttp/issues"
@@ -78,7 +78,7 @@
          "web" : "https://github.com/genio/http-ghttp"
       }
    },
-   "version" : "1.080_003",
+   "version" : "1.081",
    "x_contributors" : [
       "Chase Whitener <capoeirab@cpan.org>"
    ],
