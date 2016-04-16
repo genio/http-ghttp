@@ -2,6 +2,7 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
     - Fixed a minor POD issue
+    - required 0.003 of the Alien::GHTTP module
 
 1.080_002 2016-04-07
     - Fixed a missing dep

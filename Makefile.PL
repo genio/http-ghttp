@@ -13,10 +13,8 @@ use Alien::GHTTP;
 my %WriteMakefileArgs = (
   "ABSTRACT" => "(DEPRECATED) Perl interface to the gnome ghttp library",
   "AUTHOR" => "Matt Sergeant <matt\@sergeant.org>",
-  "BUILD_REQUIRES" => {
-    "Alien::GHTTP" => "0.003"
-  },
   "CONFIGURE_REQUIRES" => {
+    "Alien::GHTTP" => "0.003",
     "ExtUtils::MakeMaker" => 0
   },
   "DISTNAME" => "HTTP-GHTTP",
@@ -32,6 +30,7 @@ my %WriteMakefileArgs = (
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
+    "Alien::GHTTP" => "0.003",
     "ExtUtils::MakeMaker" => 0,
     "File::Spec" => 0,
     "IO::Handle" => 0,

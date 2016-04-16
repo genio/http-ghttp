@@ -14,13 +14,9 @@
    },
    "name" : "HTTP-GHTTP",
    "prereqs" : {
-      "build" : {
-         "requires" : {
-            "Alien::GHTTP" : "0.003"
-         }
-      },
       "configure" : {
          "requires" : {
+            "Alien::GHTTP" : "0.003",
             "ExtUtils::MakeMaker" : "0"
          }
       },
@@ -55,6 +51,7 @@
             "CPAN::Meta" : "2.120900"
          },
          "requires" : {
+            "Alien::GHTTP" : "0.003",
             "ExtUtils::MakeMaker" : "0",
             "File::Spec" : "0",
             "IO::Handle" : "0",
