@@ -1,55 +1,44 @@
+/* $Id: GHTTP.xs,v 1.8 2002/03/25 09:24:54 matt Exp $ */
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 #include "EXTERN.h"
 #include "perl.h"
 #include "XSUB.h"
 #include "ppport.h"
 #include "ghttp.h"
-
-typedef struct {
-    ghttp_request *ghttp;
-    SV *set_body_sv;
-} http_ghttp_class;
+#ifdef __cplusplus
+}
+#endif
 
 MODULE = HTTP::GHTTP         PACKAGE = HTTP::GHTTP
 
-PROTOTYPES: DISABLE
-
-http_ghttp_class *
+ghttp_request *
 _new(CLASS)
         char * CLASS
-    PREINIT:
-        http_ghttp_class *self;
     CODE:
-        self = malloc( sizeof(http_ghttp_class) );
-        if ( !self ) {
-            warn("Unable to allocate http_ghttp_class");
-            XSRETURN_UNDEF;
-        }
-        self->ghttp = ghttp_request_new();
-        if ( !self->ghttp ) {
+        RETVAL = ghttp_request_new();
+        if (RETVAL == NULL) {
             warn("Unable to allocate ghttp_request");
             XSRETURN_UNDEF;
         }
-        self->set_body_sv = NULL;
-        RETVAL = self;
         /* sv_bless(RETVAL, gv_stash_pv(CLASS, 1)); */
     OUTPUT:
         RETVAL
 
 void
 DESTROY(self)
-        http_ghttp_class *self
+        ghttp_request *self
     CODE:
-        ghttp_request_destroy(self->ghttp);
-        if ( self->set_body_sv )
-            SvREFCNT_dec( self->set_body_sv );
-        free( self );
+        ghttp_request_destroy(self);
 
 int
 set_uri(self, uri)
-        http_ghttp_class *self
+        ghttp_request *self
         char *uri
     CODE:
-        if(ghttp_set_uri(self->ghttp, uri) == ghttp_error) {
+        if(ghttp_set_uri(self, uri) == ghttp_error) {
             XSRETURN_UNDEF;
         }
         RETVAL = 1;
@@ -58,49 +47,49 @@ set_uri(self, uri)
 
 int
 set_proxy(self, proxy)
-        http_ghttp_class *self
+        ghttp_request *self
         char *proxy
     CODE:
-        RETVAL = ghttp_set_proxy(self->ghttp, proxy);
+        RETVAL = ghttp_set_proxy(self, proxy);
     OUTPUT:
         RETVAL
 
 void
 set_header(self, hdr, val)
-        http_ghttp_class *self
+        ghttp_request *self
         const char *hdr
         const char *val
     CODE:
-        ghttp_set_header(self->ghttp, hdr, val);
+        ghttp_set_header(self, hdr, val);
 
 void
 process_request(self)
-        http_ghttp_class *self
+        ghttp_request *self
     CODE:
-        ghttp_prepare(self->ghttp);
-        ghttp_process(self->ghttp);
+        ghttp_prepare(self);
+        ghttp_process(self);
 
 void
 clean(self)
-       http_ghttp_class *self
+       ghttp_request *self
     CODE:
-       ghttp_clean(self->ghttp);
+       ghttp_clean(self);
 
 int
 prepare(self)
-        http_ghttp_class *self
+        ghttp_request *self
     CODE:
-        RETVAL = ghttp_prepare(self->ghttp);
+        RETVAL = ghttp_prepare(self);
     OUTPUT:
         RETVAL
 
 int
 process(self)
-        http_ghttp_class *self
+        ghttp_request *self
     PREINIT:
         ghttp_status process_status;
     CODE:
-        process_status = ghttp_process(self->ghttp);
+        process_status = ghttp_process(self);
         if (process_status == ghttp_error) {
             XSRETURN_UNDEF;
         }
@@ -110,10 +99,10 @@ process(self)
 
 const char*
 get_header(self, hdr)
-        http_ghttp_class *self
+        ghttp_request *self
         const char *hdr
     CODE:
-        RETVAL = ghttp_get_header(self->ghttp, hdr);
+        RETVAL = ghttp_get_header(self, hdr);
     OUTPUT:
         RETVAL
 
@@ -121,13 +110,13 @@ get_header(self, hdr)
 
 void
 get_headers(self)
-        http_ghttp_class *self
+        ghttp_request *self
     PREINIT:
         char **hdrs;
         int num_hdrs;
         int i;
     PPCODE:
-        if (ghttp_get_header_names(self->ghttp, &hdrs, &num_hdrs) == -1) {
+        if (ghttp_get_header_names(self, &hdrs, &num_hdrs) == -1) {
             XSRETURN_UNDEF;
         }
 
@@ -142,95 +131,91 @@ get_headers(self)
 
 int
 close(self)
-        http_ghttp_class *self
+        ghttp_request *self
     CODE:
-        RETVAL = ghttp_close(self->ghttp);
+        RETVAL = ghttp_close(self);
     OUTPUT:
         RETVAL
 
 SV *
 get_body(self)
-        http_ghttp_class *self
+        ghttp_request *self
     PREINIT:
         SV* buffer;
     CODE:
         buffer = newSVpvn("",0);
-        sv_catpvn(buffer, ghttp_get_body(self->ghttp), ghttp_get_body_len(self->ghttp));
+        sv_catpvn(buffer, ghttp_get_body(self), ghttp_get_body_len(self));
         RETVAL = buffer;
     OUTPUT:
         RETVAL
 
 const char *
 get_error(self)
-        http_ghttp_class *self
+        ghttp_request *self
     CODE:
-        RETVAL = ghttp_get_error(self->ghttp);
+        RETVAL = ghttp_get_error(self);
     OUTPUT:
         RETVAL
 
 int
 set_authinfo(self, user, pass)
-        http_ghttp_class *self
+        ghttp_request *self
         const char *user
         const char *pass
     CODE:
-        RETVAL = ghttp_set_authinfo(self->ghttp, user, pass);
+        RETVAL = ghttp_set_authinfo(self, user, pass);
     OUTPUT:
         RETVAL
 
 int
 set_proxy_authinfo(self, user, pass)
-        http_ghttp_class *self
+        ghttp_request *self
         const char *user
         const char *pass
     CODE:
-        RETVAL = ghttp_set_proxy_authinfo(self->ghttp, user, pass);
+        RETVAL = ghttp_set_proxy_authinfo(self, user, pass);
     OUTPUT:
         RETVAL
 
 int
 set_type(self, type)
-        http_ghttp_class *self
+        ghttp_request *self
         int type
     CODE:
-        RETVAL = ghttp_set_type(self->ghttp, type);
+        RETVAL = ghttp_set_type(self, type);
     OUTPUT:
         RETVAL
 
 int
 set_body(self, body)
-        http_ghttp_class *self
+        ghttp_request *self
         SV *body
     PREINIT:
         STRLEN len;
         char * str;
     CODE:
-        if ( self->set_body_sv )
-            SvREFCNT_dec( self->set_body_sv );
-        self->set_body_sv = body;
-        SvREFCNT_inc( body );
         str = SvPV(body, len);
-        RETVAL = ghttp_set_body(self->ghttp, str, len);
+        RETVAL = ghttp_set_body(self, str, len);
     OUTPUT:
         RETVAL
 
 int
 _get_socket(self)
-        http_ghttp_class *self
+        ghttp_request *self
     CODE:
-        RETVAL = ghttp_get_socket(self->ghttp);
+        RETVAL = ghttp_get_socket(self);
     OUTPUT:
         RETVAL
 
 void
 get_status(self)
-        http_ghttp_class *self
+        ghttp_request *self
     PREINIT:
         int code;
         const char *reason;
     PPCODE:
-        code = ghttp_status_code(self->ghttp);
-        reason = ghttp_reason_phrase(self->ghttp);
+        code = ghttp_status_code(self);
+        reason = ghttp_reason_phrase(self);
         EXTEND(SP, 2);
         PUSHs(sv_2mortal(newSViv(code)));
        if (reason == NULL)
@@ -239,11 +224,11 @@ get_status(self)
 
 void
 current_status(self)
-        http_ghttp_class *self
+        ghttp_request *self
     PREINIT:
         ghttp_current_status status;
     PPCODE:
-        status = ghttp_get_status(self->ghttp);
+        status = ghttp_get_status(self);
         EXTEND(SP, 3);
         PUSHs(sv_2mortal(newSViv(status.proc)));
         PUSHs(sv_2mortal(newSViv(status.bytes_read)));
@@ -251,18 +236,18 @@ current_status(self)
 
 int
 set_async(self)
-        http_ghttp_class *self
+        ghttp_request *self
     CODE:
-        RETVAL = ghttp_set_sync(self->ghttp, ghttp_async);
+        RETVAL = ghttp_set_sync(self, ghttp_async);
     OUTPUT:
         RETVAL
 
 void
 set_chunksize(self, size)
-        http_ghttp_class *self
+        ghttp_request *self
         int size
     CODE:
-        ghttp_set_chunksize(self->ghttp, size);
+        ghttp_set_chunksize(self, size);
 
  #
  # CONSTANTS
