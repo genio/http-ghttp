@@ -3,6 +3,7 @@ Revision history for {{$dist->name}}
 {{$NEXT}}
     - XS revert for testing issues
     - Added a few extra simplistic tests
+    - Turned on Travis CI testing
 
 1.080_003 2016-04-15
     - Fixed a minor POD issue
