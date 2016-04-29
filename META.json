@@ -4,7 +4,7 @@
       "Matt Sergeant <matt@sergeant.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 5.047, CPAN::Meta::Converter version 2.150005",
+   "generated_by" : "Dist::Zilla version 5.043, CPAN::Meta::Converter version 2.150005",
    "license" : [
       "perl_5"
    ],
@@ -16,7 +16,7 @@
    "prereqs" : {
       "configure" : {
          "requires" : {
-            "Alien::GHTTP" : "0.003",
+            "Alien::GHTTP" : "0.005",
             "ExtUtils::MakeMaker" : "0"
          }
       },
@@ -36,6 +36,7 @@
       },
       "runtime" : {
          "requires" : {
+            "Alien::GHTTP" : "0.005",
             "Carp" : "0",
             "Exporter" : "0",
             "IO::Handle" : "0",
@@ -50,7 +51,6 @@
             "CPAN::Meta" : "2.120900"
          },
          "requires" : {
-            "Alien::GHTTP" : "0.003",
             "ExtUtils::MakeMaker" : "0",
             "File::Spec" : "0",
             "IO::Handle" : "0",

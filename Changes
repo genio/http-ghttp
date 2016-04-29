@@ -1,7 +1,9 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
-    - 
+    - Re-apply patch from dsteinwand
+    - Require Alien::GHTTP to get around FreeBSD shared library problem
+    - Up requirement to version 0.005 of Alien::GHTTP
 
 1.080_004 2016-04-26
     - XS revert for testing issues

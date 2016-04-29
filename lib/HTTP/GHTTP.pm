@@ -2,6 +2,7 @@ package HTTP::GHTTP;
 
 use strict;
 use warnings;
+use Alien::GHTTP;
 use XSLoader ();
 use base qw(Exporter);
 
